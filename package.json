@@ -1,4 +1,6 @@
 {
+  "author": "Ryan Wibawa <ryan.wibawa@gmail.com>",
+  "license": "MIT",
   "name": "keycloak-ng",
   "version": "0.0.0",
   "scripts": {
