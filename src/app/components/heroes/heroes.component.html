@@ -1,0 +1,24 @@
+<div class="row">
+    <table>
+        <tr>
+            <th>Hero</th>
+            <th>Attack</th>
+            <th>Roles</th>
+            <th>Legs</th>
+        </tr>
+        <tr *ngFor="let hero of heroes$ | async">
+            <td>
+                {{ hero.localized_name }}
+            </td>
+            <td>
+                {{ hero.attack_type }}
+            </td>
+            <td>
+                {{ hero.roles }}
+            </td>
+            <td>
+                {{ hero.legs }}
+            </td>
+        </tr>
+    </table>
+</div>
