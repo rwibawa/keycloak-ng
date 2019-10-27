@@ -10,6 +10,10 @@ import { HeroesComponent } from './components/heroes/heroes.component';
 import { HeroesService } from './services/heroes/heroes.service';
 import { BannerComponent } from './components/banner/banner.component';
 import { HomeComponent } from './components/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 const keycloakService = new KeycloakService();
 
@@ -24,7 +28,11 @@ const keycloakService = new KeycloakService();
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     HeroesService,

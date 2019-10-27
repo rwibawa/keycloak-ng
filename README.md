@@ -11,6 +11,15 @@ $ ng generate service services/heroes/heroes
 
 $ ng generate component components/banner
 $ ng generate component components/home
+
+$ ng add @angular/material
+Installed packages for tooling via npm.
+? Choose a prebuilt theme name, or "custom" for a custom theme: Deep Purple/Amber  [ Preview: https://material.angular.io?theme=deeppurple-amber ]
+? Set up HammerJS for gesture recognition? Yes
+? Set up browser animations for Angular Material? Yes
+UPDATE package.json (1570 bytes)
+
+$ ng generate @angular/material:table components/heroes
 ```
 
 Get the `keycloak.js` adapter from the Keycloak Server at [http://localhost:8088/auth/js/keycloak.js](http://localhost:8088/auth/js/keycloak.js). Or get the `keycloak.json` by clicking on the `Installation` tab select `Keycloak OIDC JSON` for Format Option then click *Download*. The downloaded `keycloak.json` file should be hosted on your web server at the same location as your HTML pages.
