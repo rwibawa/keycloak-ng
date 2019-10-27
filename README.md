@@ -1,11 +1,16 @@
-# KeycloakNg
+# keycloak-ng
+Angular application that authenticate to a Keycloak Server with OpenID Connect protocol.
 
 ## 1. Setup
 ```bash
 $ ng new keycloak-ng
 $ npm i -S keycloak-angular keycloak-js
+
 $ ng generate component components/heroes
 $ ng generate service services/heroes/heroes
+
+$ ng generate component components/banner
+$ ng generate component components/home
 ```
 
 Get the `keycloak.js` adapter from the Keycloak Server at [http://localhost:8088/auth/js/keycloak.js](http://localhost:8088/auth/js/keycloak.js). Or get the `keycloak.json` by clicking on the `Installation` tab select `Keycloak OIDC JSON` for Format Option then click *Download*. The downloaded `keycloak.json` file should be hosted on your web server at the same location as your HTML pages.
@@ -39,8 +44,8 @@ The KeycloakService can be initialized before the application loading. When the 
 
 This has two major benefits.
 
-This is faster because the application isn't fully bootstrapped and
-It prevents a moment when you see the application without having the authorization.
+  1. This is faster because the application isn't fully bootstrapped and
+  2. It prevents a moment when you see the application without having the authorization.
 
 ### `AppModule`
 ```ts
@@ -59,6 +64,7 @@ const keycloakService = new KeycloakService();
   ],
   entryComponents: [AppComponent]
 })
+
 export class AppModule implements DoBootstrap {
   ngDoBootstrap(appRef: ApplicationRef) {
     keycloakService
@@ -101,6 +107,7 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [AppAuthGuard]
 })
+
 export class AppRoutingModule { }
 ```
 
@@ -113,6 +120,7 @@ import { KeycloakService } from 'keycloak-angular';
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.sass']
 })
+
 export class BannerComponent implements OnInit {
 
   constructor(protected keycloakAngular: KeycloakService) { }
