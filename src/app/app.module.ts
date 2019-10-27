@@ -8,13 +8,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HeroesComponent } from './components/heroes/heroes.component';
 import { HeroesService } from './services/heroes/heroes.service';
+import { BannerComponent } from './components/banner/banner.component';
+import { HomeComponent } from './components/home/home.component';
 
 const keycloakService = new KeycloakService();
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent
+    HeroesComponent,
+    BannerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,7 @@ const keycloakService = new KeycloakService();
       useValue: keycloakService
     }
   ],
-  bootstrap: [AppComponent]
+  entryComponents: [AppComponent]
 })
 export class AppModule implements DoBootstrap {
   ngDoBootstrap(appRef: ApplicationRef) {

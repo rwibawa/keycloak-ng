@@ -1,23 +1,29 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HeroesComponent } from './components/heroes/heroes.component';
-
+import { HomeComponent, HeroesComponent } from './components';
+import { AppAuthGuard } from 'app/app.authguard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/heroes',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
     path: 'heroes',
-    component: HeroesComponent
+    component: HeroesComponent,
+    canActivate: [AppAuthGuard]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AppAuthGuard]
 })
 export class AppRoutingModule { }

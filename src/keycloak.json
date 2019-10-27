@@ -1,0 +1,8 @@
+{
+  "realm": "keycloak-angular",
+  "auth-server-url": "http://localhost:8088/auth",
+  "ssl-required": "external",
+  "resource": "keycloak-heroes-api",
+  "public-client": true,
+  "confidential-port": 0
+}

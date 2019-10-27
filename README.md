@@ -34,6 +34,101 @@ So the import in `heroes.component.ts`:
 import { Hero, HeroesService } from 'app/services';
 ```
 
+## 3. Using ngDoBootstrap
+The KeycloakService can be initialized before the application loading. When the Keycloak initialization is successful the application is bootstrapped.
+
+This has two major benefits.
+
+This is faster because the application isn't fully bootstrapped and
+It prevents a moment when you see the application without having the authorization.
+
+### `AppModule`
+```ts
+import { NgModule, DoBootstrap, ApplicationRef } from '@angular/core';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+
+const keycloakService = new KeycloakService();
+
+@NgModule({
+  imports: [KeycloakAngularModule],
+  providers: [
+    {
+      provide: KeycloakService,
+      useValue: keycloakService
+    }
+  ],
+  entryComponents: [AppComponent]
+})
+export class AppModule implements DoBootstrap {
+  ngDoBootstrap(appRef: ApplicationRef) {
+    keycloakService
+      .init()
+      .then(() => {
+        console.log('[ngDoBootstrap] bootstrap app');
+
+        appRef.bootstrap(AppComponent);
+      })
+      .catch(error => console.error('[ngDoBootstrap] init Keycloak failed', error));
+  }
+}
+```
+
+### `src/keycloak.json`
+Make it available at [http://localhost:4200/keycloak.json](http://localhost:4200/keycloak.json) by adding the static content reference in `angular.json`.
+```json
+"assets": [
+  "src/favicon.ico",
+  "src/assets",
+  "src/keycloak.json"
+]
+```
+
+### `src/app/app.authguard.ts`
+Refer to it in the `app-routing.module.ts` router configuration:
+```ts
+import { AppAuthGuard } from 'app/app.authguard';
+
+const routes: Routes = [
+  {
+    path: 'heroes',
+    component: HeroesComponent,
+    canActivate: [AppAuthGuard]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  providers: [AppAuthGuard]
+})
+export class AppRoutingModule { }
+```
+
+### Logout method in `src/app/components/banner/banner.component.ts`
+```ts
+import { KeycloakService } from 'keycloak-angular';
+
+@Component({
+  selector: 'app-banner',
+  templateUrl: './banner.component.html',
+  styleUrls: ['./banner.component.sass']
+})
+export class BannerComponent implements OnInit {
+
+  constructor(protected keycloakAngular: KeycloakService) { }
+
+  async logout(): Promise<void> {
+    try {
+      return this.keycloakAngular.logout('http://localhost:4200/home');
+    }
+    catch (e) {
+      return console.error(e);
+    }
+  }
+}
+```
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.13.
 
 ## Development server
