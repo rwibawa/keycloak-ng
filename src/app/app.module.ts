@@ -15,6 +15,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
+// Angular Material Components
+import { MatToolbarModule, MatButtonModule } from '@angular/material';
+
 const keycloakService = new KeycloakService();
 
 @NgModule({
@@ -32,7 +35,8 @@ const keycloakService = new KeycloakService();
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatToolbarModule, MatButtonModule
   ],
   providers: [
     HeroesService,
