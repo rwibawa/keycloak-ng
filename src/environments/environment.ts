@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apis: { dota: 'http://localhost:3000' }
+  apis: { dota: '/dotaApi' }
 };
 
 /*

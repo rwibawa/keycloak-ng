@@ -1,0 +1,11 @@
+{
+    "/dotaApi": {
+      "target": "http://localhost:3000",
+      "secure": false,
+      "pathRewrite": {
+        "^/dotaApi": ""
+      },
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
