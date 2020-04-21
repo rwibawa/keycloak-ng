@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node ./node_modules/@angular/cli/bin/ng serve --port=4200",
-    "build": "ng build",
+    "build": "rm -rf dist; node ./node_modules/@angular/cli/bin/ng build --output-path dist",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

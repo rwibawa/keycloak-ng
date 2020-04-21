@@ -22,7 +22,9 @@ UPDATE package.json (1570 bytes)
 $ ng generate @angular/material:table components/heroes
 ```
 
-Get the `keycloak.js` adapter from the Keycloak Server at [http://localhost:8088/auth/js/keycloak.js](http://localhost:8088/auth/js/keycloak.js). Or get the `keycloak.json` by clicking on the `Installation` tab select `Keycloak OIDC JSON` for Format Option then click *Download*. The downloaded `keycloak.json` file should be hosted on your web server at the same location as your HTML pages.
+Get the `keycloak.js` adapter from the Keycloak Server at [http://localhost:8088/auth/js/keycloak.js](http://localhost:8088/auth/js/keycloak.js). Put it in `src/assets/keycloak.js`.
+
+Or get the `keycloak.json` by clicking on the `Installation` tab select `Keycloak OIDC JSON` for Format Option then click *Download*. The downloaded `keycloak.json` file should be hosted on your web server at the same location as your HTML pages.
 Here is the [Javascript adapter docs](https://www.keycloak.org/docs/latest/securing_apps/index.html#_javascript_adapter).
 
 ## 2. import paths
